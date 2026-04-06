@@ -6,7 +6,7 @@ import os
 # -------------------------------
 # You can add more folders or files as needed
 project_structure = {
-    "components": ["auth/sign-in-form.tsx", "auth/sign-up-form.tsx"],
+    "app/(legal)": ["page.tsx", "layout.tsx"],
 }
 
 # -------------------------------
@@ -21,14 +21,13 @@ def create_project_structure(base_path="."):
 
         for file in files:
             file_path = os.path.join(folder_path, file)
-            # Create empty file if it doesn't exist
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)  # ← add this
             if not os.path.exists(file_path):
                 with open(file_path, "w") as f:
-                    f.write("")  # leave empty or put default content
+                    f.write("")
                 print(f"  Created file: {file_path}")
-            else:
-                print(f"  File already exists: {file_path}")
-
+    else:
+        print(f"  File already exists: {file_path}")
 
 # -------------------------------
 # MAIN EXECUTION

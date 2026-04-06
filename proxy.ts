@@ -39,10 +39,10 @@ export default function middleware(request: NextRequest) {
   // Define public routes (no authentication required)
   const publicRoutes = [
     "/",
-    "/sign-in",
-    "/sign-up",
-    "/forgot-password",
-    "/reset-password",
+    "/auth/sign-in",
+    "/auth/sign-up",
+    "/auth/forgot-password",
+    "/auth/reset-password",
     "/privacy-policy",
     "/terms-of-service",
     "/data-security",
@@ -64,8 +64,7 @@ export default function middleware(request: NextRequest) {
 
   if (!session) {
     const signInUrl = new URL("/auth/sign-in", request.url);
-    const fullPath = pathname + search;
-    signInUrl.searchParams.set("redirectTo", fullPath);
+    signInUrl.searchParams.set("redirectTo", pathname);
     return NextResponse.redirect(signInUrl);
   }
 

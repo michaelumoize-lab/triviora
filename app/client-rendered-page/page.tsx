@@ -17,7 +17,9 @@ export default function ClientRenderedPage() {
     return (
       <div className="max-w-xl mx-auto p-6 space-y-3">
         <p className="text-red-500 font-medium">Session error</p>
-        <p className="text-sm text-gray-500">{error.message}</p>
+        <p className="text-sm text-gray-500">
+          Unable to load session. Please try again.
+        </p>
         <button
           onClick={() => refetch()}
           className="px-4 py-2 bg-red-600 text-white rounded text-sm hover:bg-red-700 transition-colors"
@@ -27,7 +29,6 @@ export default function ClientRenderedPage() {
       </div>
     );
   }
-
   return (
     <div className="max-w-xl mx-auto p-6 space-y-4">
       <h1 className="text-2xl font-semibold">Client Rendered Page</h1>

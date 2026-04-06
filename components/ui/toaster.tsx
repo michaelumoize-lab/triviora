@@ -13,16 +13,16 @@ const Toaster = () => {
       toastOptions={{
         duration: 4000,
         style: {
-          background: isDark ? "var(--popover)" : "var(--popover)",
-          color: isDark ? "var(--popover-foreground)" : "var(--popover-foreground)",
+          background: "var(--popover)",
+          color: "var(--popover-foreground)",
           border: "1px solid var(--border)",
           borderRadius: "var(--radius)",
           fontSize: "0.875rem",
         },
         success: {
           iconTheme: {
-            primary: "var(--primary)",
-            secondary: "var(--primary-foreground)",
+            primary: "hsl(var(--primary))",
+            secondary: "hsl(var(--primary-foreground))",
           },
         },
         error: {

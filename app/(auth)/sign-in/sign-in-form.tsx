@@ -49,6 +49,14 @@ export function SignInForm() {
 
   const redirect = searchParams.get("redirect");
 
+  const safeRedirect = (url: string | null): string => {
+    if (!url) return "/";
+    if (url.startsWith("/") && !url.startsWith("//")) return url;
+    return "/";
+  };
+
+  const validatedRedirect = safeRedirect(redirect);
+
   const form = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -62,19 +70,23 @@ export function SignInForm() {
     setError(null);
     setLoading(true);
 
-    const { error } = await authClient.signIn.email({
-      email,
-      password,
-      rememberMe,
-    });
+    try {
+      const { error } = await authClient.signIn.email({
+        email,
+        password,
+        rememberMe,
+      });
 
-    setLoading(false);
-
-    if (error) {
-      setError(error.message || "Something went wrong");
-    } else {
-      toast.success("Signed in successfully");
-      router.push(redirect ?? "/");
+      if (error) {
+        setError(error.message || "Something went wrong");
+      } else {
+        toast.success("Signed in successfully");
+        router.push(validatedRedirect);
+      }
+    } catch (err: any) {
+      setError(err.message || "Network error");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -82,15 +94,19 @@ export function SignInForm() {
     setError(null);
     setLoading(true);
 
-    const { error } = await authClient.signIn.social({
-      provider,
-      callbackURL: redirect ?? "/",
-    });
+    try {
+      const { error } = await authClient.signIn.social({
+        provider,
+        callbackURL: validatedRedirect,
+      });
 
-    setLoading(false);
-
-    if (error) {
-      setError(error.message || "Something went wrong");
+      if (error) {
+        setError(error.message || "Something went wrong");
+      }
+    } catch (e) {
+      setError("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   }
 

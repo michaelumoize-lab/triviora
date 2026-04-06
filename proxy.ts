@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export default function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, search } = request.nextUrl;
 
   const maintenanceMode = process.env.MAINTENANCE_MODE === "true";
 
@@ -39,8 +39,10 @@ export default function middleware(request: NextRequest) {
   // Define public routes (no authentication required)
   const publicRoutes = [
     "/",
-    "/auth/sign-in",
-    "/auth/sign-up",
+    "/sign-in",
+    "/sign-up",
+    "/forgot-password",
+    "/reset-password",
     "/privacy-policy",
     "/terms-of-service",
     "/data-security",
@@ -49,9 +51,9 @@ export default function middleware(request: NextRequest) {
   ];
 
   const isPublicRoute = publicRoutes.some(
-    (route) => pathname === route || pathname.startsWith(`${route}/`),
+    (route) =>
+      pathname === route || (route !== "/" && pathname.startsWith(`${route}/`)),
   );
-
   if (isPublicRoute) {
     return NextResponse.next();
   }
@@ -62,7 +64,8 @@ export default function middleware(request: NextRequest) {
 
   if (!session) {
     const signInUrl = new URL("/auth/sign-in", request.url);
-    signInUrl.searchParams.set("redirectTo", pathname);
+    const fullPath = pathname + search;
+    signInUrl.searchParams.set("redirectTo", fullPath);
     return NextResponse.redirect(signInUrl);
   }
 

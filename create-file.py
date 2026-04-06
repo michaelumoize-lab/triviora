@@ -1,4 +1,4 @@
-# file: create_structure.py
+# file: create-file.py
 import os
 
 # -------------------------------

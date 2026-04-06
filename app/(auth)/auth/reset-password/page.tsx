@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 interface ResetPasswordPageProps {
-  searchParams: Promise<{ token: string }>;
+  searchParams: Promise<{ token?: string }>;
 }
 
 export default async function ResetPasswordPage({

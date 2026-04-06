@@ -73,18 +73,17 @@ export default function FeaturesSection() {
     >
       {/* Subtle background texture */}
       <div
-        aria-hidden
+        aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-muted/30 dark:bg-muted/10"
       />
       <div
-        aria-hidden
+        aria-hidden="true"
         className="pointer-events-none absolute top-0 inset-x-0 h-px bg-border"
       />
       <div
-        aria-hidden
+        aria-hidden="true"
         className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-border"
       />
-
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <div className="text-center mb-16 space-y-4">
@@ -146,13 +145,13 @@ export default function FeaturesSection() {
                         <span
                           className={`flex items-center justify-center w-7 h-7 rounded-lg shrink-0 ${color.icon}`}
                         >
-                          <Icon className="w-3.5 h-3.5" aria-hidden />
+                          <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                         </span>
                         <span className="text-sm font-medium text-foreground">
                           {label}
                         </span>
                       </li>
-                    ))}
+                    ))}{" "}
                   </ul>
                 </div>
               </article>

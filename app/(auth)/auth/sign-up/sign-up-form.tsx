@@ -63,18 +63,24 @@ export function SignUpForm() {
   async function onSubmit({ email, password, name }: SignUpValues) {
     setError(null);
 
-    const { error } = await authClient.signUp.email({
-      email,
-      password,
-      name,
-      // callbackURL: "/email-verified",
-    });
+    try {
+      const { error: signUpError } = await authClient.signUp.email({
+        email,
+        password,
+        name,
+        // callbackURL: "/email-verified",
+      });
 
-    if (error) {
-      setError(error.message || "Something went wrong");
-    } else {
-      toast.success("Signed up successfully");
-      router.push("/dashboard");
+      if (signUpError) {
+        setError(signUpError.message || "Something went wrong");
+      } else {
+        toast.success("Signed up successfully");
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Something went wrong";
+      setError(errorMessage);
+      toast.error(errorMessage);
     }
   }
 

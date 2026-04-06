@@ -27,6 +27,7 @@ export default function CtaSection() {
             <div
               key={label}
               className="flex items-center justify-center w-10 h-10 rounded-xl bg-card border border-border shadow-xs"
+              role="img"
               aria-label={label}
             >
               <Icon className="w-4 h-4 text-primary" aria-hidden />

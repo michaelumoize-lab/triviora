@@ -78,8 +78,8 @@ export default function DashboardClient({ user }: DashboardClientProps) {
                 {getGreeting()}, {displayName}
               </h1>
               <p className="text-muted-foreground mt-1">
-                {user.email} • Welcome back to Triviora
-              </p>
+                {user.email ? `${user.email} • ` : ""}Welcome back to Triviora
+              </p>{" "}
             </div>
           </div>
         </div>

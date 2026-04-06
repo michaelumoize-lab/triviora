@@ -44,13 +44,13 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
     setSuccess(null);
     setError(null);
 
-    const { error } = await authClient.resetPassword({
+    const { error: resetError } = await authClient.resetPassword({
       newPassword,
       token,
     });
 
-    if (error) {
-      setError(error.message || "Something went wrong");
+    if (resetError) {
+      setError(resetError.message || "Something went wrong");
     } else {
       setSuccess("Password has been reset. You can now sign in.");
       setTimeout(() => router.push("/sign-in"), 3000);

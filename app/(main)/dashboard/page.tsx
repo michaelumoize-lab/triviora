@@ -1,5 +1,4 @@
-// app/dashboard/page.tsx
-import { redirect } from "next/navigation";
+// app/(main)/dashboard/page.tsximport { redirect } from "next/navigation";
 import { getServerSession } from "@/lib/get-session";
 import DashboardClient from "@/components/dashboard/dashboard-client";
 

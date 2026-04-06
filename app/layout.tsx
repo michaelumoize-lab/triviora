@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/components/Shared/ThemeProvider";
 
 const outfit = Outfit({
   variable: "--font-sans",
@@ -75,7 +76,14 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", "font-sans", outfit.variable)}
     >
       <body className="min-h-full flex flex-col">
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>

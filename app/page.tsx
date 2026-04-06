@@ -1,5 +1,10 @@
-import React from "react";
+import { ModeToggle } from "@/components/Shared/ModeToggle";
 
 export default function Home() {
-  return <div>page</div>;
+  return (
+    <div>
+      page
+      <ModeToggle />
+    </div>
+  );
 }

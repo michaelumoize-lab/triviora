@@ -83,8 +83,8 @@ export function SignInForm() {
         toast.success("Signed in successfully");
         router.push(validatedRedirect);
       }
-    } catch (err: any) {
-      setError(err.message || "Network error");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Network error");
     } finally {
       setLoading(false);
     }

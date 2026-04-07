@@ -1,0 +1,198 @@
+Nice — this is where your app really starts to **feel real**. For **Triviora (mind • body • spirit)**, your landing page should feel **premium, calm, and purposeful**, not cluttered.
+
+I’ll give you a **clean component structure** you can directly build in your Next.js + shadcn setup.
+
+---
+
+# 🧱 **Landing Page Component Structure (Triviora)**
+
+## **1️⃣ Navbar**
+
+**Purpose:** Navigation + branding
+
+**Includes:**
+
+* Logo (Triviora)
+* Links: Features, About, Pricing (optional)
+* Theme toggle 🌗
+* CTA: **Sign In / Get Started**
+
+```tsx
+<Navbar />
+```
+
+---
+
+## **2️⃣ Hero Section (MOST IMPORTANT)**
+
+**Purpose:** First impression + value proposition
+
+**Content:**
+
+* Headline: *“Balance Your Mind, Body & Spirit”*
+* Subtext: AI-powered life tracking
+* CTA buttons:
+
+  * Get Started
+  * Learn More
+* Optional: dashboard preview mock
+
+```tsx
+<HeroSection />
+```
+
+---
+
+## **3️⃣ Features Section**
+
+**Purpose:** Explain what Triviora does
+
+Split into 3 pillars:
+
+* 🧠 Mind (focus, journaling, AI insights)
+* 💪 Body (fitness, habits)
+* ✨ Spirit (reflection, balance)
+
+```tsx
+<FeaturesSection />
+```
+
+---
+
+## **4️⃣ How It Works**
+
+**Purpose:** Simplicity → increase conversions
+
+Steps:
+
+1. Track your life
+2. Get AI insights
+3. Improve daily
+
+```tsx
+<HowItWorks />
+```
+
+---
+
+## **5️⃣ Dashboard Preview**
+
+**Purpose:** Show actual product (very important)
+
+* Cards UI
+* Charts / stats
+* Clean modern layout
+
+```tsx
+<PreviewSection />
+```
+
+---
+
+## **6️⃣ Testimonials (Optional but powerful)**
+
+**Purpose:** Build trust
+
+```tsx
+<Testimonials />
+```
+
+---
+
+## **7️⃣ CTA Section**
+
+**Purpose:** Convert user
+
+* “Start your journey today”
+* Big button: Get Started
+
+```tsx
+<CTASection />
+```
+
+---
+
+## **8️⃣ Footer**
+
+**Purpose:** Final navigation
+
+* Links
+* Socials
+* Copyright
+
+```tsx
+<Footer />
+```
+
+---
+
+# 🧠 Suggested Folder Structure
+
+```
+components/
+  landing/
+    navbar.tsx
+    hero-section.tsx
+    features-section.tsx
+    how-it-works.tsx
+    preview-section.tsx
+    testimonials.tsx
+    cta-section.tsx
+    footer.tsx
+```
+
+---
+
+# 🎯 Example Page Assembly
+
+```tsx
+import { Navbar } from "@/components/landing/navbar";
+import { HeroSection } from "@/components/landing/hero-section";
+import { FeaturesSection } from "@/components/landing/features-section";
+import { HowItWorks } from "@/components/landing/how-it-works";
+import { PreviewSection } from "@/components/landing/preview-section";
+import { CTASection } from "@/components/landing/cta-section";
+import { Footer } from "@/components/landing/footer";
+
+export default function Home() {
+  return (
+    <>
+      <Navbar />
+      <HeroSection />
+      <FeaturesSection />
+      <HowItWorks />
+      <PreviewSection />
+      <CTASection />
+      <Footer />
+    </>
+  );
+}
+```
+
+---
+
+# 🔥 Design Tips (Important for your theme)
+
+* Use **lots of spacing** → premium feel
+* Keep colors **subtle (Tailwind defaults)**
+* Use **rounded-xl / 2xl**
+* Add **soft shadows (shadow-sm / shadow-md)**
+* Avoid clutter — clarity wins
+
+---
+
+# 🚀 Next Step (I recommend)
+
+I can build you:
+
+👉 A **full Hero Section + Navbar (production-ready code)** using
+
+* shadcn
+* Tailwind
+* dark mode
+* your font setup
+
+That will instantly make your app look like a real startup.
+
+Just tell me:
+**“build hero + navbar”** 👍

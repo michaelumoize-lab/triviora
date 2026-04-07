@@ -6,7 +6,11 @@ import os
 # -------------------------------
 # You can add more folders or files as needed
 project_structure = {
-    "app/(legal)": ["page.tsx", "layout.tsx"],
+    "app/api/habits": ["route.ts"],
+    "app/api/daily-notes": ["route.ts"],
+    "app/api/habits/[id]": ["route.ts"],
+    "app/api/habits/[id]/complete": ["route.ts"],
+    "app/api/habits/analytics": ["route.ts"],
 }
 
 # -------------------------------
